@@ -1,4 +1,5 @@
 using BlazorBlog.Server.Data;
+using BlazorBlog.Server.Repository;
 using BlazorBlog.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,28 +9,28 @@ namespace BlazorBlog.Server.Controllers;
 [Route("api/[controller]")]
 public class BlogController : ControllerBase
 {
-    private readonly DataContext _dataContext;
+    private readonly IBlogRepository _blogRepository;
 
-    public BlogController(DataContext dataContext)
+    public BlogController(IBlogRepository blogRepository)
     {
-        _dataContext = dataContext;
+        _blogRepository = blogRepository;
     }
 
     [HttpGet]
-    public ActionResult<List<BlogPost>> GetAllBlogPosts()
+    public async Task<ActionResult<List<BlogPost>>> GetAllBlogPostsAsync()
     {
-        return Ok(_dataContext.BlogPosts);
+        var posts = await _blogRepository.GetAllBlogPostsAsync();
+        return Ok(posts);
     }
 
     [HttpGet("{url}")]
-    public ActionResult<BlogPost> GetOneBlogPost(string url)
+    public async Task<ActionResult<BlogPost>> GetBlogPostAsync(string url)
     {
-        var post = _dataContext.BlogPosts.FirstOrDefault(p => p.Url.Equals(url));
+        var post = await _blogRepository.GetBlogPostAsync(url);
         if (post is null)
         {
             return NotFound("This post does not exist");
         }
-
         return Ok(post);
     }
 }

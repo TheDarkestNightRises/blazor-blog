@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorBlog.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221023094918_Initial")]
+    [Migration("20221023103004_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -58,6 +58,32 @@ namespace BlazorBlog.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BlogPosts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Author = "Me",
+                            Content = "Lorem Ipsum Dolor sit Atmet",
+                            DateCreated = new DateTime(2022, 10, 23, 12, 30, 4, 920, DateTimeKind.Local).AddTicks(9707),
+                            Description = "This is a bad blog",
+                            IsDeleted = false,
+                            IsPublished = true,
+                            Title = "Lol",
+                            Url = "new-blog2"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Author = "Me",
+                            Content = "Lorem Ipsum Dolor sit Atmet",
+                            DateCreated = new DateTime(2022, 10, 23, 12, 30, 4, 920, DateTimeKind.Local).AddTicks(9788),
+                            Description = "This is a bad blog",
+                            IsDeleted = false,
+                            IsPublished = true,
+                            Title = "Lol2",
+                            Url = "new-blog1"
+                        });
                 });
 #pragma warning restore 612, 618
         }

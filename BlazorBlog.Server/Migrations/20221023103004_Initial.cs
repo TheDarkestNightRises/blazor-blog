@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace BlazorBlog.Server.Migrations
 {
     /// <inheritdoc />
@@ -29,6 +31,15 @@ namespace BlazorBlog.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BlogPosts", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "BlogPosts",
+                columns: new[] { "Id", "Author", "Content", "DateCreated", "Description", "IsDeleted", "IsPublished", "Title", "Url" },
+                values: new object[,]
+                {
+                    { 1, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 23, 12, 30, 4, 920, DateTimeKind.Local).AddTicks(9707), "This is a bad blog", false, true, "Lol", "new-blog2" },
+                    { 2, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 23, 12, 30, 4, 920, DateTimeKind.Local).AddTicks(9788), "This is a bad blog", false, true, "Lol2", "new-blog1" }
                 });
         }
 
