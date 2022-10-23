@@ -1,3 +1,4 @@
+using BlazorBlog.Server.Data;
 using BlazorBlog.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,32 +8,23 @@ namespace BlazorBlog.Server.Controllers;
 [Route("api/[controller]")]
 public class BlogController : ControllerBase
 {
-    public List<BlogPost> Posts { get; set; } = new()
+    private readonly DataContext _dataContext;
+
+    public BlogController(DataContext dataContext)
     {
-        new BlogPost
-        {
-            Url = "new-blog2",
-            Title = "Lol",
-            Description = "This is a bad blog"
-        },
-        new BlogPost
-        {
-            Url = "new-blog1",
-            Title = "Lol2",
-            Description = "This is a bad blog"
-        },
-    };
+        _dataContext = dataContext;
+    }
 
     [HttpGet]
     public ActionResult<List<BlogPost>> GetAllBlogPosts()
     {
-        return Ok(Posts);
+        return Ok(_dataContext.BlogPosts);
     }
 
     [HttpGet("{url}")]
     public ActionResult<BlogPost> GetOneBlogPost(string url)
     {
-        var post = Posts.FirstOrDefault(p => p.Url.Equals(url));
+        var post = _dataContext.BlogPosts.FirstOrDefault(p => p.Url.Equals(url));
         if (post is null)
         {
             return NotFound("This post does not exist");

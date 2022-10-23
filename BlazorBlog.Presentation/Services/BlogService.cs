@@ -19,7 +19,16 @@ public class BlogService : IBlogService
 
     public async Task<BlogPost> GetBlogPostByUrl(string url)
     {
-        var post = await _client.GetFromJsonAsync<BlogPost>($"/api/Blog/{url}");
-        return post;
+        var result = await _client.GetAsync($"/api/Blog/{url}");
+        if (result.StatusCode != System.Net.HttpStatusCode.OK)
+        {
+            var message = await result.Content.ReadAsStringAsync();
+            Console.WriteLine(message);
+            return new BlogPost { Title = message };
+        }
+        else
+        {
+            return await result.Content.ReadFromJsonAsync<BlogPost>();
+        }
     }
 }
