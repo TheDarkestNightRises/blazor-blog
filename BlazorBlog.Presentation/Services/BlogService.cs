@@ -32,8 +32,14 @@ public class BlogService : IBlogService
         }
     }
 
-    public Task<BlogPost> CreateNewBlogPost(BlogPost request)
+    public async Task<BlogPost> CreateNewBlogPost(BlogPost request)
     {
-        throw new NotImplementedException();
+        HttpResponseMessage response = await _client.PostAsJsonAsync("/api/Blog/",request);
+        if (!response.IsSuccessStatusCode)
+        {
+            string content = await response.Content.ReadAsStringAsync();
+            throw new Exception(content);
+        }
+        return await response.Content.ReadFromJsonAsync<BlogPost>();
     }
 }

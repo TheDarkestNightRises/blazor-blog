@@ -1,6 +1,6 @@
 @using BlazorBlog.Shared.Models;
 @using BlazorBlog.Presentation.Services
-@inject IBlogService IBlogService
+@inject IBlogService BlogService
 
 @if (Posts == null)
 {
@@ -28,7 +28,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Posts = await IBlogService.GetBlogPostsAsync();
+        Posts = await BlogService.GetBlogPostsAsync();
     }
 
 }

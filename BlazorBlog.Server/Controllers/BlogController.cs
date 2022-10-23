@@ -33,4 +33,10 @@ public class BlogController : ControllerBase
         }
         return Ok(post);
     }
+
+    [HttpPost]
+    public async Task<ActionResult<BlogPost>> CreateNewBlogPostAsync(BlogPost request)
+    {
+       return await _blogRepository.CreateNewBlogPostAsync(request);
+    }
 }

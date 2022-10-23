@@ -23,4 +23,11 @@ public class BlogRepository : IBlogRepository
     {
         return await _dataContext.BlogPosts.FirstOrDefaultAsync(p => p.Url.Equals(url));
     }
+
+    public async Task<BlogPost> CreateNewBlogPostAsync(BlogPost blogPost)
+    {
+        _dataContext.Add(blogPost);
+        await _dataContext.SaveChangesAsync();
+        return blogPost;
+    }
 }
