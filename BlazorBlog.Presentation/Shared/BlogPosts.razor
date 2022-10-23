@@ -2,26 +2,33 @@
 @using BlazorBlog.Presentation.Services
 @inject IBlogService IBlogService
 
-<h3>BlogPost</h3>
-@foreach (var post in Posts)
+@if (Posts == null)
 {
-    <div>
-        @post.Title
-    </div>
-    <div>
-        @post.Description
-    </div>
-    <div>
-        <a href="/posts/@post.Url"> Read more ...</a>
-    </div>
+    <span>Getting the blog postS...</span>
+}
+else
+{
+    <h3>BlogPost</h3>
+    @foreach (var post in Posts)
+    {
+        <div>
+            @post.Title
+        </div>
+        <div>
+            @post.Description
+        </div>
+        <div><a href="/posts/@post.Url"> Read more ...</a></div>
+    }
 }
 
-@code {
-    private List<BlogPost?> Posts = new List<BlogPost?>();
 
-    protected override void OnInitialized()
+
+@code {
+    private List<BlogPost> Posts;
+
+    protected override async Task OnInitializedAsync()
     {
-        Posts = IBlogService.GetBlogPosts();
+        Posts = await IBlogService.GetBlogPosts();
     }
 
 }

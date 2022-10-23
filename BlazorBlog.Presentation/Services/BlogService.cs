@@ -1,33 +1,25 @@
+using System.Net.Http.Json;
 using BlazorBlog.Shared.Models;
 
 namespace BlazorBlog.Presentation.Services;
 
 public class BlogService : IBlogService
 {
-    public List<BlogPost?> Posts { get; set; } = new()
-    {
-        new BlogPost
-        {
-            Url = "new-blog2",
-            Title = "Lol",
-            Description = "This is a bad blog"
-        },
-        new BlogPost
-        {
-            Url = "new-blog1",
-            Title = "Lol2",
-            Description = "This is a bad blog"
-        },
-    };
+    private readonly HttpClient _client;
 
-    
-    public List<BlogPost?> GetBlogPosts()
+    public BlogService(HttpClient client)
     {
-        return Posts;
+        _client = client;
     }
 
-    public BlogPost? GetBlogPostByUrl(string url)
+    public async Task<List<BlogPost>> GetBlogPosts()
     {
-        return Posts.FirstOrDefault(p => p.Url.Equals(url));
+        return await _client.GetFromJsonAsync<List<BlogPost>>("/api/Blog");
+    }
+
+    public async Task<BlogPost> GetBlogPostByUrl(string url)
+    {
+        var post = await _client.GetFromJsonAsync<BlogPost>($"/api/Blog/{url}");
+        return post;
     }
 }

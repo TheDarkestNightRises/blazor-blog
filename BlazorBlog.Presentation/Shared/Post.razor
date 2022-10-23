@@ -3,17 +3,26 @@
 @using BlazorBlog.Presentation.Services
 @inject IBlogService _blogService
 
-<h3>@currentPost.Title</h3>
-<div>@currentPost.Content</div>
+@if (currentPost == null)
+{
+    <span>Getting the blog post...</span>
+}
+else
+{
+    <h3>@currentPost.Title</h3>
+    <div>@currentPost.Content</div>
+}
+
+
 @code {
     private BlogPost? currentPost;
     
     [Parameter]
     public String Url { get; set; }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        currentPost = _blogService.GetBlogPostByUrl(Url);
+        currentPost = await _blogService.GetBlogPostByUrl(Url);
     }
 
 }
