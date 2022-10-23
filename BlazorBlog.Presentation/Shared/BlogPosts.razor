@@ -11,10 +11,13 @@
     <div>
         @post.Description
     </div>
+    <div>
+        <a href="/posts/@post.Url"> Read more ...</a>
+    </div>
 }
 
 @code {
-    private List<BlogPost> Posts = new List<BlogPost>();
+    private List<BlogPost?> Posts = new List<BlogPost?>();
 
     protected override void OnInitialized()
     {

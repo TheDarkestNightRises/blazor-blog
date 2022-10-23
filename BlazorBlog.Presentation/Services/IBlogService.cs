@@ -4,6 +4,6 @@ namespace BlazorBlog.Presentation.Services;
 
 public interface IBlogService
 {
-    List<BlogPost> GetBlogPosts();
-    BlogPost GetBlogPostByUrl(string url);
+    List<BlogPost?> GetBlogPosts();
+    BlogPost? GetBlogPostByUrl(string url);
 }

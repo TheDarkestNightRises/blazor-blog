@@ -4,7 +4,7 @@ namespace BlazorBlog.Presentation.Services;
 
 public class BlogService : IBlogService
 {
-    public List<BlogPost> Posts { get; set; } = new List<BlogPost>()
+    public List<BlogPost?> Posts { get; set; } = new()
     {
         new BlogPost
         {
@@ -21,13 +21,13 @@ public class BlogService : IBlogService
     };
 
     
-    public List<BlogPost> GetBlogPosts()
+    public List<BlogPost?> GetBlogPosts()
     {
         return Posts;
     }
 
-    public BlogPost GetBlogPostByUrl(string url)
+    public BlogPost? GetBlogPostByUrl(string url)
     {
-        throw new NotImplementedException();
+        return Posts.FirstOrDefault(p => p.Url.Equals(url));
     }
 }
