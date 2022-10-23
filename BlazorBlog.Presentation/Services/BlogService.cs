@@ -12,12 +12,12 @@ public class BlogService : IBlogService
         _client = client;
     }
 
-    public async Task<List<BlogPost>> GetBlogPosts()
+    public async Task<List<BlogPost>> GetBlogPostsAsync()
     {
         return await _client.GetFromJsonAsync<List<BlogPost>>("/api/Blog");
     }
 
-    public async Task<BlogPost> GetBlogPostByUrl(string url)
+    public async Task<BlogPost> GetBlogPostByUrlAsync(string url)
     {
         var result = await _client.GetAsync($"/api/Blog/{url}");
         if (result.StatusCode != System.Net.HttpStatusCode.OK)
@@ -30,5 +30,10 @@ public class BlogService : IBlogService
         {
             return await result.Content.ReadFromJsonAsync<BlogPost>();
         }
+    }
+
+    public Task<BlogPost> CreateNewBlogPost(BlogPost request)
+    {
+        throw new NotImplementedException();
     }
 }

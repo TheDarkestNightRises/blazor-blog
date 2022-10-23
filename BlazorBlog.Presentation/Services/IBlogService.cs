@@ -4,6 +4,8 @@ namespace BlazorBlog.Presentation.Services;
 
 public interface IBlogService
 {
-    Task<List<BlogPost>> GetBlogPosts();
-    Task<BlogPost> GetBlogPostByUrl(string url);
+    Task<List<BlogPost>> GetBlogPostsAsync();
+    Task<BlogPost> GetBlogPostByUrlAsync(string url);
+    Task<BlogPost> CreateNewBlogPost(BlogPost request);
+
 }

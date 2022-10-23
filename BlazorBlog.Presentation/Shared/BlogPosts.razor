@@ -28,7 +28,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Posts = await IBlogService.GetBlogPosts();
+        Posts = await IBlogService.GetBlogPostsAsync();
     }
 
 }

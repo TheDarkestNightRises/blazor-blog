@@ -22,7 +22,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        currentPost = await _blogService.GetBlogPostByUrl(Url);
+        currentPost = await _blogService.GetBlogPostByUrlAsync(Url);
     }
 
 }
