@@ -1,4 +1,6 @@
 @using BlazorBlog.Shared.Models;
+@using BlazorBlog.Presentation.Services
+@inject IBlogService IBlogService
 
 <h3>BlogPost</h3>
 @foreach (var post in Posts)
@@ -12,19 +14,11 @@
 }
 
 @code {
+    private List<BlogPost> Posts = new List<BlogPost>();
 
-    public List<BlogPost> Posts { get; set; } = new List<BlogPost>()
+    protected override void OnInitialized()
     {
-        new BlogPost
-        {
-            Title = "Lol",
-            Description = "This is a bad blog"
-        },
-        new BlogPost
-        {
-            Title = "Lol2",
-            Description = "This is a bad blog"
-        },
-    };
+        Posts = IBlogService.GetBlogPosts();
+    }
 
 }
