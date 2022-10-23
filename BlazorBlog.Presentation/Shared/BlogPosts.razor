@@ -1,0 +1,30 @@
+@using BlazorBlog.Shared.Models;
+
+<h3>BlogPost</h3>
+@foreach (var post in Posts)
+{
+    <div>
+        @post.Title
+    </div>
+    <div>
+        @post.Description
+    </div>
+}
+
+@code {
+
+    public List<BlogPost> Posts { get; set; } = new List<BlogPost>()
+    {
+        new BlogPost
+        {
+            Title = "Lol",
+            Description = "This is a bad blog"
+        },
+        new BlogPost
+        {
+            Title = "Lol2",
+            Description = "This is a bad blog"
+        },
+    };
+
+}
