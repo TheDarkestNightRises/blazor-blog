@@ -23,7 +23,8 @@ public class DataContext : DbContext
             Author = "Me",
             Title = "Lol",
             Description = "This is a bad blog",
-            Content = "Lorem Ipsum Dolor sit Atmet"
+            Content = "Lorem Ipsum Dolor sit Atmet",
+            Image = ""
         });
         modelBuilder.Entity<BlogPost>().HasData(new BlogPost
         {
@@ -32,7 +33,8 @@ public class DataContext : DbContext
             Author = "Me",
             Title = "Lol2",
             Description = "This is a bad blog",
-            Content = "Lorem Ipsum Dolor sit Atmet"
+            Content = "Lorem Ipsum Dolor sit Atmet",
+            Image=""
         });
     }
     

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorBlog.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221023103004_Initial")]
+    [Migration("20221024000236_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -41,6 +41,10 @@ namespace BlazorBlog.Server.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
@@ -53,6 +57,7 @@ namespace BlazorBlog.Server.Migrations
 
                     b.Property<string>("Url")
                         .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -65,8 +70,9 @@ namespace BlazorBlog.Server.Migrations
                             Id = 1,
                             Author = "Me",
                             Content = "Lorem Ipsum Dolor sit Atmet",
-                            DateCreated = new DateTime(2022, 10, 23, 12, 30, 4, 920, DateTimeKind.Local).AddTicks(9707),
+                            DateCreated = new DateTime(2022, 10, 24, 2, 2, 36, 715, DateTimeKind.Local).AddTicks(7884),
                             Description = "This is a bad blog",
+                            Image = "",
                             IsDeleted = false,
                             IsPublished = true,
                             Title = "Lol",
@@ -77,8 +83,9 @@ namespace BlazorBlog.Server.Migrations
                             Id = 2,
                             Author = "Me",
                             Content = "Lorem Ipsum Dolor sit Atmet",
-                            DateCreated = new DateTime(2022, 10, 23, 12, 30, 4, 920, DateTimeKind.Local).AddTicks(9788),
+                            DateCreated = new DateTime(2022, 10, 24, 2, 2, 36, 715, DateTimeKind.Local).AddTicks(7952),
                             Description = "This is a bad blog",
+                            Image = "",
                             IsDeleted = false,
                             IsPublished = true,
                             Title = "Lol2",

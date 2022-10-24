@@ -19,7 +19,8 @@ namespace BlazorBlog.Server.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Url = table.Column<string>(type: "TEXT", nullable: false),
+                    Url = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
+                    Image = table.Column<string>(type: "TEXT", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Content = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
@@ -35,11 +36,11 @@ namespace BlazorBlog.Server.Migrations
 
             migrationBuilder.InsertData(
                 table: "BlogPosts",
-                columns: new[] { "Id", "Author", "Content", "DateCreated", "Description", "IsDeleted", "IsPublished", "Title", "Url" },
+                columns: new[] { "Id", "Author", "Content", "DateCreated", "Description", "Image", "IsDeleted", "IsPublished", "Title", "Url" },
                 values: new object[,]
                 {
-                    { 1, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 23, 12, 30, 4, 920, DateTimeKind.Local).AddTicks(9707), "This is a bad blog", false, true, "Lol", "new-blog2" },
-                    { 2, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 23, 12, 30, 4, 920, DateTimeKind.Local).AddTicks(9788), "This is a bad blog", false, true, "Lol2", "new-blog1" }
+                    { 1, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 24, 2, 2, 36, 715, DateTimeKind.Local).AddTicks(7884), "This is a bad blog", "", false, true, "Lol", "new-blog2" },
+                    { 2, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 24, 2, 2, 36, 715, DateTimeKind.Local).AddTicks(7952), "This is a bad blog", "", false, true, "Lol2", "new-blog1" }
                 });
         }
 
