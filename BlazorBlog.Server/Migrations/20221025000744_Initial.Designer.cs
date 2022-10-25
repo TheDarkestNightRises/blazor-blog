@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorBlog.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221024000236_Initial")]
+    [Migration("20221025000744_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -70,7 +70,7 @@ namespace BlazorBlog.Server.Migrations
                             Id = 1,
                             Author = "Me",
                             Content = "Lorem Ipsum Dolor sit Atmet",
-                            DateCreated = new DateTime(2022, 10, 24, 2, 2, 36, 715, DateTimeKind.Local).AddTicks(7884),
+                            DateCreated = new DateTime(2022, 10, 25, 2, 7, 44, 938, DateTimeKind.Local).AddTicks(8227),
                             Description = "This is a bad blog",
                             Image = "",
                             IsDeleted = false,
@@ -83,7 +83,7 @@ namespace BlazorBlog.Server.Migrations
                             Id = 2,
                             Author = "Me",
                             Content = "Lorem Ipsum Dolor sit Atmet",
-                            DateCreated = new DateTime(2022, 10, 24, 2, 2, 36, 715, DateTimeKind.Local).AddTicks(7952),
+                            DateCreated = new DateTime(2022, 10, 25, 2, 7, 44, 938, DateTimeKind.Local).AddTicks(8312),
                             Description = "This is a bad blog",
                             Image = "",
                             IsDeleted = false,

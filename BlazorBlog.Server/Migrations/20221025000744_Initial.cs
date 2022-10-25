@@ -39,8 +39,8 @@ namespace BlazorBlog.Server.Migrations
                 columns: new[] { "Id", "Author", "Content", "DateCreated", "Description", "Image", "IsDeleted", "IsPublished", "Title", "Url" },
                 values: new object[,]
                 {
-                    { 1, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 24, 2, 2, 36, 715, DateTimeKind.Local).AddTicks(7884), "This is a bad blog", "", false, true, "Lol", "new-blog2" },
-                    { 2, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 24, 2, 2, 36, 715, DateTimeKind.Local).AddTicks(7952), "This is a bad blog", "", false, true, "Lol2", "new-blog1" }
+                    { 1, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 25, 2, 7, 44, 938, DateTimeKind.Local).AddTicks(8227), "This is a bad blog", "", false, true, "Lol", "new-blog2" },
+                    { 2, "Me", "Lorem Ipsum Dolor sit Atmet", new DateTime(2022, 10, 25, 2, 7, 44, 938, DateTimeKind.Local).AddTicks(8312), "This is a bad blog", "", false, true, "Lol2", "new-blog1" }
                 });
         }
 

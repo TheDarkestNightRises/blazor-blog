@@ -1,26 +1,27 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<nav class="top-row ps-3 navbar navbar-dark navbar-expand-sm ng-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">BlazorBlog.Presentation</a>
+        <a class="navbar-brand" href="">Blog</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-</div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="create">
-                <span class="oi oi-plus" aria-hidden="true"></span> Create
-            </NavLink>
-        </div>
-    </nav>
-</div>
+
+    <div class="@NavMenuCssClass navbar-collapse">
+        <ul class="navbar-nav">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="create">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Create
+                </NavLink>
+            </div>
+        </ul>
+    </div>
+</nav>
 
 @code {
     private bool collapseNavMenu = true;
