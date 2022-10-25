@@ -11,13 +11,14 @@ else
 {
     <img src="@currentPost.Image">
     <h3>@currentPost.Title</h3>
-    <div>@currentPost.Content</div>
+    @((MarkupString)currentPost.Content)
+                          
 }
 
 
 @code {
     private BlogPost? currentPost;
-    
+
     [Parameter]
     public String Url { get; set; }
 

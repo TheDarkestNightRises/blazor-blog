@@ -113,7 +113,7 @@
 
     async Task CreateNewBlogPost()
     {
-        newBlogPost.Content = await QuillHtml.GetText();
+        newBlogPost.Content = await QuillHtml.GetHTML();
         var result = await BlogService.CreateNewBlogPost(newBlogPost);
         _navigationManager.NavigateTo($"posts/{result.Url}");
     }
