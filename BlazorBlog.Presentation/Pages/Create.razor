@@ -29,67 +29,6 @@
         <label for="description">Description</label>
         <InputText id="description" @bind-Value="newBlogPost.Description" class="form-control"/>
     </div>
-
-    <div class="col-md-8">
-
-        <div class="card">
-            <div class="card-header">
-                Html Text Editor
-            </div>
-            <div class="card-body mb-5" style="height:200px;">
-               <!-- Text editor -->
-               <BlazoredTextEditor @ref=QuillHtml Placeholder="write somthing...">
-
-                   <ToolbarContent>
-                        <select class="ql-header">
-                            <option selected=""></option>
-                            <option value="1"></option>
-                            <option value="2"></option>
-                            <option value="3"></option>
-                            <option value="4"></option>
-                            <option value="5"></option>
-                        </select>
-                        <span class="ql-formats">
-                            <button class="ql-bold"></button>
-                            <button class="ql-italic"></button>
-                            <button class="ql-underline"></button>
-                            <button class="ql-strike"></button>
-                        </span>
-                        <span class="ql-formats">
-                            <select class="ql-color"></select>
-                            <select class="ql-background"></select>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-list" value="ordered"></button>
-                            <button class="ql-list" value="bullet"></button>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-link"></button>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-video"></button>
-                        </span>
-
-                   </ToolbarContent>
-
-               </BlazoredTextEditor>
-
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-success" @onclick=@(async ()=> await ShowAoutPutPreview() )>Show OutPut</button>
-            </div>
-        </div>
-        <!-- Preview card -->
-        <div class="card">
-            <div class="card-header">
-                the preview Of html editor
-            </div>
-            <div class="card-body">
-                @preview
-            </div>
-        </div>
-
-    </div>
     <div class="form-group">
         <label for="author">Author</label>
         <InputTextArea id="author" @bind-Value="newBlogPost.Author" class="form-control"/>
@@ -103,8 +42,69 @@
         <label for="isPublished">Publish</label>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
+        <div class="col-md-8">
+    
+            <div class="card">
+                <div class="card-header">
+                    Html Text Editor
+                </div>
+                <div class="card-body mb-5" style="height:200px;">
+                   <!-- Text editor -->
+                   <BlazoredTextEditor @ref=QuillHtml Placeholder="write somthing...">
+    
+                       <ToolbarContent>
+                            <select class="ql-header">
+                                <option selected=""></option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                                <option value="3"></option>
+                                <option value="4"></option>
+                                <option value="5"></option>
+                            </select>
+                            <span class="ql-formats">
+                                <button class="ql-bold"></button>
+                                <button class="ql-italic"></button>
+                                <button class="ql-underline"></button>
+                                <button class="ql-strike"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <select class="ql-color"></select>
+                                <select class="ql-background"></select>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-list" value="ordered"></button>
+                                <button class="ql-list" value="bullet"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-link"></button>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-video"></button>
+                            </span>
+    
+                       </ToolbarContent>
+    
+                   </BlazoredTextEditor>
+    
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success" @onclick=@(async ()=> await ShowAoutPutPreview() )>Show OutPut</button>
+                </div>
+            </div>
+            <!-- Preview card -->
+            <div class="card">
+                <div class="card-header">
+                    the preview Of html editor
+                </div>
+                <div class="card-body">
+                    @preview
+                </div>
+            </div>
+    
+        </div>
     <ValidationSummary/>
 </EditForm>
+
 
 @code {
     private BlazoredTextEditor QuillHtml;
