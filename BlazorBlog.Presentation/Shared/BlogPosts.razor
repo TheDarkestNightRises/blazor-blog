@@ -14,9 +14,12 @@ else
         <div class="card my-4">
             <div class="card-img" style="background-image: url('@(post.Image ?? placeholderImage)')"></div>
             <div class="card-body">
+                <img src="@post.Image"/>
                 <h5 class="card-title">@post.Title</h5>
                 <p class="card-text">@post.Description</p>
-                <p class="card-text"><small class="text-muted">@post.DateCreated.ToLongDateString()</small> </p>
+                <p class="card-text">
+                    <small class="text-muted">@post.DateCreated.ToLongDateString()</small>
+                </p>
                 <a href="/posts/@post.Url" class="btn btn-primary">Read more...</a>
             </div>
         </div>
