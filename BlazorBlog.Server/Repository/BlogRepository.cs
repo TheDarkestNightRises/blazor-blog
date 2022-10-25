@@ -14,11 +14,11 @@ public class BlogRepository : IBlogRepository
     }
 
 
-    public async Task<List<BlogPost>> GetAllBlogPostsAsync()
+    public async Task<IQueryable<BlogPost>> GetAllBlogPostsAsync()
     {
-       return await _dataContext.BlogPosts.ToListAsync();
+        return await Task.FromResult(_dataContext.BlogPosts.AsQueryable());
     }
-
+    
     public async Task<BlogPost?> GetBlogPostAsync(string url)
     {
         return await _dataContext.BlogPosts.FirstOrDefaultAsync(p => p.Url.Equals(url));
