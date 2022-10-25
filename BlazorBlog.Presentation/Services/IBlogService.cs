@@ -8,4 +8,5 @@ public interface IBlogService
     Task<BlogPost> GetBlogPostByUrlAsync(string url);
     Task<BlogPost> CreateNewBlogPost(BlogPost request);
 
+    Task<List<BlogPost>> GetBlogPostsAsync(int pageNumber, int i);
 }

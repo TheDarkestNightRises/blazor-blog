@@ -42,4 +42,9 @@ public class BlogService : IBlogService
         }
         return await response.Content.ReadFromJsonAsync<BlogPost>();
     }
+
+    public async Task<List<BlogPost>> GetBlogPostsAsync(int pageNumber = 1, int i = 5)
+    {
+        return await _client.GetFromJsonAsync<List<BlogPost>>($"/api/Blog?PageNumber={pageNumber}&MaxPerPage={i}");
+    }
 }
