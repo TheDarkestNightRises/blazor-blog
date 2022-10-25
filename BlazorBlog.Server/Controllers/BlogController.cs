@@ -1,7 +1,9 @@
 using BlazorBlog.Server.Data;
+using BlazorBlog.Server.Helper;
 using BlazorBlog.Server.Repository;
 using BlazorBlog.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorBlog.Server.Controllers;
 
@@ -17,10 +19,11 @@ public class BlogController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<BlogPost>>> GetAllBlogPostsAsync()
+    public async Task<ActionResult<List<BlogPost>>> GetAllBlogPostsAsync([FromQuery]PaginationDto paginationDto)
     {
         var posts = await _blogRepository.GetAllBlogPostsAsync();
-        return Ok(posts);
+        await HttpContext.InsertPaginationParamaterInResponse(posts, paginationDto.MaxPerPage);
+        return await posts.Paginate(paginationDto).ToListAsync();
     }
 
     [HttpGet("{url}")]
